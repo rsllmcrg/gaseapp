@@ -2,6 +2,7 @@ import streamlit as st
 from PIL import Image
 import io
 import requests
+from PIL import Image
 
 
 def main():
@@ -27,11 +28,9 @@ def main():
                 st.image(img, caption="Uploaded photo", use_column_width=True)
 
         elif option == "Take a photo":
-            def take_photo():
-                cap = cv2.VideoCapture(0)
-                ret, frame = cap.read()
-                cap.release()
-                return frame
+            def capture_image():
+                image = Image.open(io.BytesIO(photo_stream.getvalue()))
+                return image
 
             uploaded_file = st.sidebar.file_uploader("Choose an image", type=["jpg", "jpeg", "png"])
 
