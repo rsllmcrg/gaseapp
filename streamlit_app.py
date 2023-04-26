@@ -2,7 +2,6 @@ import streamlit as st
 from PIL import Image
 import io
 import requests
-import cv2
 
 
 def main():
