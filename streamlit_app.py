@@ -28,17 +28,17 @@ def main():
 
         elif option == "Take a photo":
             st.write("Click the button below to take a photo using your device's camera.")
-    if st.button('Take a photo'):
-        image_placeholder = st.empty()
-        # This will open the device's camera and capture a photo
-        # The captured photo will be displayed in the app
-        st.write("Taking photo...")
-        image_upload = st.file_uploader(" ", type=["jpg", "jpeg", "png"], key="camera")
-        if image_upload is not None:
-            file_bytes = io.BytesIO(image_upload.read())
-            image = Image.open(file_bytes)
-            image.save('captured_image.png')
-            image_placeholder.image(image, caption='Captured Image', use_column_width=True)
+            if st.button('Take a photo'):
+                image_placeholder = st.empty()
+                # This will open the device's camera and capture a photo
+                # The captured photo will be displayed in the app
+                st.write("Taking photo...")
+                image_upload = st.file_uploader(" ", type=["jpg", "jpeg", "png"], key="camera")
+                if image_upload is not None:
+                    file_bytes = io.BytesIO(image_upload.read())
+                    image = Image.open(file_bytes)
+                    image.save('captured_image.png')
+                    image_placeholder.image(image, caption='Captured Image', use_column_width=True)
 
     elif choice == "About":
         st.write("""
