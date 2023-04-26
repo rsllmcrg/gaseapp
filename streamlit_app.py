@@ -17,7 +17,7 @@ if option == 'Drag and Drop':
 if option == 'Take a Photo':
     st.write("Click the button below to take a photo using your device's camera.")
     if st.button('Take a photo'):
-        image = st.image('', use_column_width=True)
+        image_placeholder = st.empty()
         # This will open the device's camera and capture a photo
         # The captured photo will be displayed in the app
         st.write("Taking photo...")
@@ -26,4 +26,4 @@ if option == 'Take a Photo':
             file_bytes = io.BytesIO(image_upload.read())
             image = Image.open(file_bytes)
             image.save('captured_image.png')
-            st.image(image, caption='Captured Image', use_column_width=True)
+            image_placeholder.image(image, caption='Captured Image', use_column_width=True)
