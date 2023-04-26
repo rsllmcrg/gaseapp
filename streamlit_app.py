@@ -49,3 +49,6 @@ def main():
 
         The Golden Apple Snail Eggs Detection Application has the potential to revolutionize the way farmers detect and prevent golden apple snail infestations. By providing a fast and accurate way to detect the presence of snail eggs, the application can help farmers save time and money and reduce the use of harmful pesticides.
         """)
+
+if __name__ == '__main__':
+    main()  
