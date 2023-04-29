@@ -2,20 +2,6 @@ import streamlit as st
 from PIL import Image
 import io
 import requests
-import numpy as np
-
-# Create login page
-username = st.sidebar.text_input('Username')
-password = st.sidebar.text_input('Password', type='password')
-
-if st.sidebar.button('Login'):
-    # Check if username and password match database
-    # Redirect to main app page if login is successful
-    st.success('Logged in as {}'.format(username))
-
-if st.sidebar.button('Register'):
-    # Add new user to database
-    st.success('You have successfully registered!')
 
 
 def main():
