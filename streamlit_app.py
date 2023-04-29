@@ -1,25 +1,8 @@
 import streamlit as st
 from PIL import Image
 import io
+import requests
 
-# Create login page
-username = st.sidebar.text_input('Username')
-password = st.sidebar.text_input('Password', type='password')
-
-if st.sidebar.button('Login'):
-    # Check if username and password match database
-    # Redirect to main app page if login is successful
-    st.success('Logged in as {}'.format(username))
-
-if st.sidebar.button('Register'):
-    # Add new user to database
-    st.success('You have successfully registered!')
-
-# Function to detect eggs in image
-def detect_eggs(image):
-    # Your egg detection algorithm goes here
-    # Return the annotated image with egg detections
-    return annotated_image
 
 def main():
     st.set_page_config(page_title="Golden Apple Snail Eggs Detection", page_icon=":guardsman:", layout="wide")
@@ -43,12 +26,6 @@ def main():
                 img = Image.open(image_file)
                 st.image(img, caption="Uploaded photo", use_column_width=True)
 
-                # Detect eggs in the uploaded image
-                annotated_image = detect_eggs(img)
-
-                # Display the annotated image
-                st.image(annotated_image, caption="Annotated photo", use_column_width=True)
-
         elif option == "Take a photo":
             st.write("Click the button below to take a photo using your device's camera.")
             if st.button('Take a photo'):
@@ -63,11 +40,15 @@ def main():
                     image.save('captured_image.png')
                     image_placeholder.image(image, caption='Captured Image', use_column_width=True)
 
-                    # Detect eggs in the captured image
-                    annotated_image = detect_eggs(image)
-
-                    # Display the annotated image
-                    st.image(annotated_image, caption="Annotated photo", use_column_width=True)
-
     elif choice == "About":
-        st.write("""The Golden Apple Snail Eggs Detection Application is a computer vision-based application that aims to detect the presence of golden apple snail eggs in rice fields. The golden apple snail is a notorious pest in rice fields, and its eggs can cause significant damage to crops. This application provides a""")
+        st.write("""
+
+        The Golden Apple Snail Eggs Detection Application is a computer vision-based application that aims to detect the presence of golden apple snail eggs in rice fields. The golden apple snail is a notorious pest in rice fields, and its eggs can cause significant damage to crops. This application provides a quick and efficient way to detect the presence of these eggs, allowing farmers to take appropriate measures to prevent further damage.
+
+        The application is built using deep learning techniques and is trained on a large dataset of images of golden apple snail eggs. It uses convolutional neural networks (CNNs) to automatically extract features from the input images and classify them as either containing or not containing golden apple snail eggs. The application can be run on a desktop computer or a mobile device and can be accessed through a user-friendly interface.
+
+        The Golden Apple Snail Eggs Detection Application has the potential to revolutionize the way farmers detect and prevent golden apple snail infestations. By providing a fast and accurate way to detect the presence of snail eggs, the application can help farmers save time and money and reduce the use of harmful pesticides.
+        """)
+
+if __name__ == '__main__':
+    main()  
