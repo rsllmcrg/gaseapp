@@ -1,8 +1,6 @@
 import streamlit as st
 from PIL import Image
 import io
-import requests
-import numpy as np
 
 # Create login page
 username = st.sidebar.text_input('Username')
@@ -17,13 +15,11 @@ if st.sidebar.button('Register'):
     # Add new user to database
     st.success('You have successfully registered!')
 
-# Load pre-trained model for object detection
-# Replace this with your own model
-def detect_objects(image):
-    # Code for detecting objects in image
-    # ...
-    # Return coordinates and labels of detected objects
-    return objects, labels
+# Function to detect eggs in image
+def detect_eggs(image):
+    # Your egg detection algorithm goes here
+    # Return the annotated image with egg detections
+    return annotated_image
 
 def main():
     st.set_page_config(page_title="Golden Apple Snail Eggs Detection", page_icon=":guardsman:", layout="wide")
@@ -47,15 +43,11 @@ def main():
                 img = Image.open(image_file)
                 st.image(img, caption="Uploaded photo", use_column_width=True)
 
-                # Detect objects in image
-                objects, labels = detect_objects(img)
+                # Detect eggs in the uploaded image
+                annotated_image = detect_eggs(img)
 
-                # Show detected objects on image
-                draw = ImageDraw.Draw(img)
-                for obj, label in zip(objects, labels):
-                    draw.rectangle(obj, outline="red")
-                    draw.text((obj[0], obj[1] - 10), label, fill="red")
-                st.image(img, caption="Detected objects", use_column_width=True)
+                # Display the annotated image
+                st.image(annotated_image, caption="Annotated photo", use_column_width=True)
 
         elif option == "Take a photo":
             st.write("Click the button below to take a photo using your device's camera.")
@@ -66,4 +58,18 @@ def main():
                 st.write("Taking photo...")
                 image_upload = st.file_uploader(" ", type=["jpg", "jpeg", "png"], key="camera")
                 if image_upload is not None:
-                    file_bytes =
+                    file_bytes = io.BytesIO(image_upload.read())
+                    image = Image.open(file_bytes)
+                    image.save('captured_image.png')
+                    image_placeholder.image(image, caption='Captured Image', use_column_width=True)
+
+                    # Detect eggs in the captured image
+                    annotated_image = detect_eggs(image)
+
+                    # Display the annotated image
+                    st.image(annotated_image, caption="Annotated photo", use_column_width=True)
+
+    elif choice == "About":
+        st.write("""
+
+        The Golden Apple Snail Eggs Detection Application is a computer vision-based application that aims to detect the presence of golden apple snail eggs in rice fields. The golden apple snail is a notorious pest in rice fields, and its eggs can cause significant damage to crops. This application provides a"
