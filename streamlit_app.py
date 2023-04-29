@@ -70,4 +70,4 @@ def main():
                     st.image(annotated_image, caption="Annotated photo", use_column_width=True)
 
     elif choice == "About":
-        st.write("The Golden Apple Snail Eggs Detection Application is a computer vision-based application that aims to detect the presence of golden apple snail eggs in rice fields. The golden apple snail is a notorious pest in rice fields, and its eggs can cause significant damage to crops. This application provides a"
+        st.write("""The Golden Apple Snail Eggs Detection Application is a computer vision-based application that aims to detect the presence of golden apple snail eggs in rice fields. The golden apple snail is a notorious pest in rice fields, and its eggs can cause significant damage to crops. This application provides a""")
