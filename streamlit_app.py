@@ -34,4 +34,36 @@ def main():
     choice = st.sidebar.selectbox("Select a page", menu)
 
     if choice == "Home":
-        st.write("<p style='text-align: center; font-style: italic;'>The Golden Apple Snail Eggs Detection Application is a web application designed to detect
+        st.write("<p style='text-align: center; font-style: italic;'>The Golden Apple Snail Eggs Detection Application is a web application designed to detect the presence of Golden Apple Snail eggs in images. "
+                 "The app uses image processing and machine learning techniques to identify and highlight the location of Golden Apple Snail eggs in the uploaded images.</p>", unsafe_allow_html=True)
+        st.write("Please upload an image containing the rice field:")
+
+        option = st.selectbox("", ("Drag and drop a photo", "Take a photo"))
+
+        if option == "Drag and drop a photo":
+            st.write("Please drag and drop a photo below:")
+            image_file = st.file_uploader("", type=["jpg", "jpeg", "png"])
+            if image_file is not None:
+                img = Image.open(image_file)
+                st.image(img, caption="Uploaded photo", use_column_width=True)
+
+                # Detect objects in image
+                objects, labels = detect_objects(img)
+
+                # Show detected objects on image
+                draw = ImageDraw.Draw(img)
+                for obj, label in zip(objects, labels):
+                    draw.rectangle(obj, outline="red")
+                    draw.text((obj[0], obj[1] - 10), label, fill="red")
+                st.image(img, caption="Detected objects", use_column_width=True)
+
+        elif option == "Take a photo":
+            st.write("Click the button below to take a photo using your device's camera.")
+            if st.button('Take a photo'):
+                image_placeholder = st.empty()
+                # This will open the device's camera and capture a photo
+                # The captured photo will be displayed in the app
+                st.write("Taking photo...")
+                image_upload = st.file_uploader(" ", type=["jpg", "jpeg", "png"], key="camera")
+                if image_upload is not None:
+                    file_bytes =
