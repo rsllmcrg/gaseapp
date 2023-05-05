@@ -4,7 +4,22 @@ import io
 import requests
 import cv2
 
+def login():
+    username = st.text_input("Username")
+    password = st.text_input("Password", type="password")
 
+    if st.button("Login"):
+        # Perform authentication logic here
+        if username == "your_username" and password == "your_password":
+            st.success("Logged in successfully")
+            st.experimental_set_query_params(logged_in=True)
+        else:
+            st.error("Invalid username or password")
+    if "logged_in" not in st.experimental_get_query_params():
+        login()
+    else:
+        main()
+        
 def main():
     st.set_page_config(page_title="Golden Apple Snail Eggs Detection", page_icon=":guardsman:", layout="wide")
     st.markdown("<h1 style='text-align: center;'>Golden Apple Snail Eggs Detection</h1>", unsafe_allow_html=True)
