@@ -36,11 +36,6 @@ def main():
 
             uploaded_file = st.sidebar.file_uploader("Choose an image", type=["jpg", "jpeg", "png"])
 
-            if st.button('Take photo'):
-                frame = take_photo()
-                image = Image.fromarray(frame)
-                st.image(image, caption='Taken photo', use_column_width=True)
-
             if uploaded_file is not None:
                 image = Image.open(uploaded_file)
                 st.image(image, caption='Uploaded image', use_column_width=True)
