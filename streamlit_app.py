@@ -18,7 +18,7 @@ def capture_image():
 st.title("Image Uploader")
 
 # Create a button for uploading an image using drag and drop
-uploaded_file = st.file_uploader("Upload an image", type=["jpg", "jpeg", "png"], drag_and_drop=True)
+uploaded_file = st.file_uploader("", type=["jpg", "jpeg", "png"])
 if uploaded_file is not None:
     # Use the PIL library to read the image data
     image = Image.open(uploaded_file)
