@@ -6,7 +6,7 @@ def login():
 
     if st.button("Login"):
         # Perform authentication logic here
-        if username == "Jean" and password == "abc1243":
+        if username == "jean" and password == "abc1243":
             st.success("Logged in successfully")
 
             # Redirect to the main page
