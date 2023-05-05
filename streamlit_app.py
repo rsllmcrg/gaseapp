@@ -18,21 +18,21 @@ def main():
                  "The app uses image processing and machine learning techniques to identify and highlight the location of Golden Apple Snail eggs in the uploaded images.</p>", unsafe_allow_html=True)
         st.write("Please upload an image containing the rice field:")
 
-        option = st.radio("", ("Drag and drop a photo", "Take a photo"))
+        option = st.radio("", ("Upload", "Camera"))
 
-        if option == "Drag and drop a photo":
+        if option == "Upload":
             st.write("Please drag and drop a photo below:")
             image_file = st.file_uploader("", type=["jpg", "jpeg", "png"])
             if image_file is not None:
                 img = Image.open(image_file)
                 st.image(img, caption="Uploaded photo", use_column_width=True)
 
-        elif option == "Take a photo":
-            def take_photo():
-                cap = cv2.VideoCapture(0)
-                ret, frame = cap.read()
-                cap.release()
-                return frame
+        elif option == "Camera":
+            st.write("Please drag and drop a photo below:")
+            image_file = st.camera_input(""])
+            if image_file is not None:
+                img = Image.open(image_file)
+                st.image(img, caption="Uploaded photo", use_column_width=True)
 
             uploaded_file = st.sidebar.file_uploader("Choose an image", type=["jpg", "jpeg", "png"])
 
