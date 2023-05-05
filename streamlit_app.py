@@ -1,38 +1,23 @@
 import streamlit as st
 import cv2
 import numpy as np
-from PIL import Image
+import requests
 
-# Define a function to display an image
-def show_image(img):
-    st.image(img, use_column_width=True)
+st.title( 'Mobile Camera Preview in Streamlit' )
+frame_window = st.image( [] )
+take_picture_button = st.button( 'Take Picture' )
 
-# Define a function to capture an image from the user's webcam
-def capture_image():
-    cap = cv2.VideoCapture(0)
-    ret, frame = cap.read()
-    cap.release()
-    return frame
+while True:
+    # Request the image from the server
+    response = requests.get(url="http://<network_ip_address>:<port>/photo.jpg")
+    imgNp = np.array(bytearray(response.content), dtype=np.uint8)
+    frame = cv2.imdecode(imgNp, cv2.IMREAD_UNCHANGED )
+    # As OpenCV decodes images in BGR format, we'd convert it to the RGB format
+    frame = cv2.cvtColor( frame , cv2.COLOR_BGR2RGB )
 
-# Create a Streamlit web app
-st.title("Image Uploader")
+    frame_window.image(frame)
 
-# Create a button for uploading an image using drag and drop
-uploaded_file = st.file_uploader("", type=["jpg", "jpeg", "png"])
-if uploaded_file is not None:
-    # Use the PIL library to read the image data
-    image = Image.open(uploaded_file)
-
-    # Display the uploaded image
-    show_image(image)
-
-# Create a button for taking a photo using the user's webcam
-if st.button("Take a Photo"):
-    # Capture an image from the user's webcam
-    frame = capture_image()
-
-    # Convert the image from OpenCV format to PIL format
-    image = Image.fromarray(np.uint8(frame))
-
-    # Display the captured image
-    show_image(image)
+    if take_picture_button:
+        # Pass the frame to a model
+        # And show the output here...
+        break
