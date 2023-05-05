@@ -18,7 +18,7 @@ def main():
                  "The app uses image processing and machine learning techniques to identify and highlight the location of Golden Apple Snail eggs in the uploaded images.</p>", unsafe_allow_html=True)
         st.write("Please upload an image containing the rice field:")
 
-        option = st.selectbox("", ("Drag and drop a photo", "Take a photo"))
+        option = st.radio("", ("Drag and drop a photo", "Take a photo"))
 
         if option == "Drag and drop a photo":
             st.write("Please drag and drop a photo below:")
