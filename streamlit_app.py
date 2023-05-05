@@ -29,7 +29,7 @@ def main():
 
         elif option == "Camera":
             st.write("Please drag and drop a photo below:")
-            image_file = st.camera_input(""])
+            image_file = st.camera_input("")
             if image_file is not None:
                 img = Image.open(image_file)
                 st.image(img, caption="Uploaded photo", use_column_width=True)
