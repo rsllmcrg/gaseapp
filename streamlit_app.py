@@ -4,6 +4,7 @@ import io
 import requests
 import cv2
 from geopy.geocoders import Nominatim
+from geopy import Point
 
 def get_image_location(image):
     # Extract the GPS info from the image metadata
@@ -15,9 +16,12 @@ def get_image_location(image):
         latitude = gps_info[2][0] + gps_info[2][1] / 60 + gps_info[2][2] / 3600
         longitude = gps_info[4][0] + gps_info[4][1] / 60 + gps_info[4][2] / 3600
 
+        # Create a Point object
+        coordinates = Point(latitude, longitude)
+
         # Reverse geocode the coordinates to get the location
         geolocator = Nominatim(user_agent="image-geolocation")
-        location = geolocator.reverse(f"{latitude}, {longitude}")
+        location = geolocator.reverse(coordinates)
 
         return location.address
 
@@ -55,8 +59,8 @@ def main():
 
         The application is built using deep learning techniques and is trained on a large dataset of images of golden apple snail eggs. It uses convolutional neural networks (CNNs) to automatically extract features from the input images and classify them as either containing or not containing golden apple snail eggs. The application can be run on a desktop computer or a mobile device and can be accessed through a user-friendly interface.
 
-        The Golden Apple Snail Eggs Detection Application has the potential to revolutionize the way farmers detect and prevent golden apple snail infestations. By providing a fast and accurate way to detect the presence of snail eggs, the application can help farmers save time and money and reduce the use of harmful pesticides.
-        """)
+        The Golden Apple Snail Eggs Detection Application has the potential to revolutionize the way farmers detect and prevent
+
         
 if __name__ == '__main__':
     main()
