@@ -3,12 +3,13 @@ from PIL import Image
 import io
 import requests
 import cv2
-
-        
+       
 def main():
+    logo = "https://github.com/rsllmcrg/gaseapp/blob/main/Red%20Black%20Bold%20Code%20Machine%20Logo.jpg"
+        
     st.set_page_config(page_title="Golden Apple Snail Eggs Detection", page_icon=":guardsman:", layout="wide")
-    st.markdown("<h1 style='display: flex; align-items: center;'><img src='https://github.com/rsllmcrg/gaseapp/blob/main/Red%20Black%20Bold%20Code%20Machine%20Logo.jpg' style='margin-right: 10px;'>Golden Apple Snail Eggs Detection</h1>", unsafe_allow_html=True)
-    st.image('https://github.com/rsllmcrg/gaseapp/blob/main/Red%20Black%20Bold%20Code%20Machine%20Logo.jpg', caption="Image from GitHub", use_column_width=True)
+    st.markdown("<h1 style='display: flex; align-items: center;'><logo, style='margin-right: 10px;'>Golden Apple Snail Eggs Detection</h1>", unsafe_allow_html=True)
+    st.image(logo, caption="Image from GitHub", use_column_width=True)
 
     # Create a menu with multiple pages
     menu = ["Home", "About"]
