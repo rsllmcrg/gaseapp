@@ -7,7 +7,7 @@ import cv2
         
 def main():
     st.set_page_config(page_title="Golden Apple Snail Eggs Detection", page_icon=":guardsman:", layout="wide")
-    st.markdown("<h1 style='display: flex; align-items: center;'><img src='gaseapp/Red Black Bold Code Machine Logo.png' style='margin-right: 10px;'>Golden Apple Snail Eggs Detection</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='display: flex; align-items: center;'><img src='https://github.com/rsllmcrg/gaseapp/blob/main/Red%20Black%20Bold%20Code%20Machine%20Logo.png' style='margin-right: 10px;'>Golden Apple Snail Eggs Detection</h1>", unsafe_allow_html=True)
 
 
     # Create a menu with multiple pages
