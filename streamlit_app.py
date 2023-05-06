@@ -4,28 +4,9 @@ import io
 import requests
 import cv2
 
-def login():
-    username = st.text_input("Username")
-    password = st.text_input("Password", type="password")
-
-    if st.button("Login"):
-        # Perform authentication logic here
-        if username == "jean" and password == "abc1243":
-            st.success("Logged in successfully")
-
-            # Redirect to the main page
-            st.experimental_set_query_params(logged_in=True)
-        else:
-            st.error("Invalid username or password")
-
+        
 def main():
-    st.title("Login Page")
-
-    # Check if the user is logged in
-    if "logged_in" not in st.experimental_get_query_params():
-        login()
-    else:
-            st.set_page_config(page_title="Golden Apple Snail Eggs Detection", page_icon=":guardsman:", layout="wide")
+    st.set_page_config(page_title="Golden Apple Snail Eggs Detection", page_icon=":guardsman:", layout="wide")
     st.markdown("<h1 style='text-align: center;'>Golden Apple Snail Eggs Detection</h1>", unsafe_allow_html=True)
 
     # Create a menu with multiple pages
@@ -70,5 +51,6 @@ def main():
         The Golden Apple Snail Eggs Detection Application has the potential to revolutionize the way farmers detect and prevent golden apple snail infestations. By providing a fast and accurate way to detect the presence of snail eggs, the application can help farmers save time and money and reduce the use of harmful pesticides.
         """)
 
-if __name__ == "__main__":
+
+if __name__ == '__main__':
     main()
