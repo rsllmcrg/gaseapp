@@ -26,21 +26,28 @@ def get_image_location(image):
 def main():
     # Rest of your code...
 
-    if option == "Upload":
-        st.write("Please drag and drop a photo below:")
-        image_file = st.file_uploader("", type=["jpg", "jpeg", "png"])
-        if image_file is not None:
-            img = Image.open(image_file)
-            st.image(img, caption="Uploaded photo", use_column_width=True)
+    if choice == "Home":
+        st.write("<p style='text-align: center; font-style: italic;'>The Golden Apple Snail Eggs Detection Application is a web application designed to detect the presence of Golden Apple Snail eggs in images. "
+                 "The app uses image processing and machine learning techniques to identify and highlight the location of Golden Apple Snail eggs in the uploaded images.</p>", unsafe_allow_html=True)
+        st.write("Please upload an image containing the rice field:")
 
-            # Get the location of the uploaded image
-            location = get_image_location(img)
-            if location:
-                st.write("Image location:", location)
-            else:
-                st.write("Location information not found in the image metadata.")
+        option = st.radio("", ("Upload", "Camera"))
 
-    # Rest of your code...
+        if option == "Upload":
+            st.write("Please drag and drop a photo below:")
+            image_file = st.file_uploader("", type=["jpg", "jpeg", "png"])
+            if image_file is not None:
+                img = Image.open(image_file)
+                st.image(img, caption="Uploaded photo", use_column_width=True)
+
+                # Get the location of the uploaded image
+                location = get_image_location(img)
+                if location:
+                    st.write("Image location:", location)
+                else:
+                    st.write("Location information not found in the image metadata.")
+
+        # Rest of your code...
 
 if __name__ == '__main__':
     main()
