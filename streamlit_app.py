@@ -59,8 +59,8 @@ def main():
 
         The application is built using deep learning techniques and is trained on a large dataset of images of golden apple snail eggs. It uses convolutional neural networks (CNNs) to automatically extract features from the input images and classify them as either containing or not containing golden apple snail eggs. The application can be run on a desktop computer or a mobile device and can be accessed through a user-friendly interface.
 
-        The Golden Apple Snail Eggs Detection Application has the potential to revolutionize the way farmers detect and prevent
+        The Golden Apple Snail Eggs Detection Application has the potential to revolutionize the way farmers detect and prevent""")
 
         
 if __name__ == '__main__':
-    main()
+main()
