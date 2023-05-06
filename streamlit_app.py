@@ -3,6 +3,7 @@ from PIL import Image
 import io
 import requests
 import cv2
+from geopy.geocoders import Nominatim
        
 def main():
     image_url = "https://github.com/rsllmcrg/gaseapp/blob/main/Red%20Black%20Bold%20Code%20Machine%20Logo.jpg"
@@ -41,6 +42,12 @@ def main():
             if uploaded_file is not None:
                 image = Image.open(uploaded_file)
                 st.image(image, caption='Uploaded image', use_column_width=True)
+
+            if uploaded_file:       
+                processed_image = process_image(uploaded_file)
+                location = geolocate_image(processed_image)    
+                st.write("Location:", location)
+         
 
 
     elif choice == "About":
