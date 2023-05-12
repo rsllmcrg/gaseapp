@@ -45,8 +45,13 @@ def main():
             
             if latitude is not None and longitude is not None:
                 st.subheader("GPS Coordinates")
-                st.write(f"Latitude: {latitude:.6f}")
-                st.write(f"Longitude: {longitude:.6f}")
+                
+                if isinstance(latitude, float) and isinstance(longitude, float):
+                    st.write(f"Latitude: {latitude:.6f}")
+                    st.write(f"Longitude: {longitude:.6f}")
+                else:
+                    st.write(f"Latitude: {latitude}")
+                    st.write(f"Longitude: {longitude}")
             else:
                 st.write("No GPS coordinates found.")
         else:
