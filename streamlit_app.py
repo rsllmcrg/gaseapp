@@ -1,6 +1,12 @@
 import streamlit as st
 import piexif
 
+# Add custom CSS
+def load_custom_css():
+    st.markdown('<style>{}</style>'.format(open('styles.css').read()), unsafe_allow_html=True)
+
+load_custom_css()
+
 def add_exif_data(image_data):
     # Create an empty EXIF dictionary
     exif_dict = {"0th": {}, "Exif": {}}
