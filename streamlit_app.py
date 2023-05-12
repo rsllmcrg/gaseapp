@@ -19,7 +19,7 @@ def add_exif_data(image_data):
 
 def main():
     # Capture image using Streamlit
-    image_file = st.camera_input("")
+    image_data = st.camera_input("")
 
     # Add EXIF data to the captured image
     image_data = add_exif_data(image_data)
