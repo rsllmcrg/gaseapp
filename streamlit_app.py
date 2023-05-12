@@ -23,6 +23,13 @@ def main():
                 # Read the uploaded file and convert it into an image object
                 img = Image.open(uploaded_file)
                 st.image(img, caption="Uploaded photo", use_column_width=True)
+                
+        elif option == "Camera":
+            st.write("Please drag and drop a photo below:")
+            image_file = st.camera_input("")
+            if image_file is not None:
+                img = Image.open(image_file)
+                st.image(img, caption="Uploaded photo", use_column_width=True)
 
     elif choice == "About":
         st.write("""
