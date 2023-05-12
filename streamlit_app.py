@@ -3,11 +3,20 @@ from PIL import Image
 # import io
 import requests
 import cv2
+# Inject custom CSS to hide the hamburger menu
+hide_menu_style = """
+<style>
+div.stButton button:first-child {
+    display: none;
+}
+</style>
+"""
 
 def main():
     # Create a menu with multiple pages
     menu = ["Home", "About"]
     choice = st.sidebar.selectbox("Select a page", menu)
+    st.markdown(hide_menu_style, unsafe_allow_html=True)
 
     if choice == "Home":
         st.markdown("<h1 style='text-align: center;'>GAS Egg Detector</h1>", unsafe_allow_html=True)
